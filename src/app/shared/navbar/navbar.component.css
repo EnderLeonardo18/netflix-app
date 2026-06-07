@@ -1,0 +1,80 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 68px; /* Altura fija estricta de la interfaz real */
+  display: flex;
+  align-items: center; /* Centrado vertical absoluto de logo y enlaces */
+  justify-content: flex-start;
+  padding: 0 4%;
+  z-index: 100;
+  /* DEGRADADO DE ALTA FIDELIDAD (Elimina la línea sólida del tope) */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.38) 30%,
+    rgba(0, 0, 0, 0.22) 55%,
+    rgba(0, 0, 0, 0.08) 80%,
+    rgba(0, 0, 0, 0) 100__
+  );
+  transition: background-color 0.4s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* Transición fluida a fondo negro sólido al hacer scroll hacia abajo */
+.nav-black {
+  background-color: #141414 !important;
+}
+
+/* LOGO CORREGIDO (Sin cortes tipográficos en los bordes) */
+.nav-logo {
+  color: #E50914;
+  font-family: 'Bebas Neue', sans-serif; /* Cambiamos la fuente genérica por la de cine */
+  font-size: 2.4rem;                     /* Aumentamos la escala porque Bebas Neue es más estilizada */
+  font-weight: normal;                   /* Esta fuente ya es gruesa por defecto */
+  letter-spacing: -0.8px;                /* Comprime las letras para lograr el impacto de la marca */
+  margin-right: 45px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  height: auto;
+
+  /* EFECTO PREMIUM: Rompe la estructura recta y cuadrada */
+  transform: scaleY(1.05);               /* Estira ligeramente el texto hacia arriba */
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Le da profundidad frente al fondo del banner */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover interactivo muy sutil */
+.nav-logo:hover {
+  transform: scaleY(1.05) scale(1.02);
+}
+
+/* MENÚ DE ENLACES ALINEADOS */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Mantiene las letras en el mismo eje horizontal que el logo */
+  height: 100%;
+}
+
+.nav-links li {
+  color: #E5E5E5;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Efecto Hover idéntico a la app comercial */
+.nav-links li:hover {
+  color: #B3B3B3;
+}

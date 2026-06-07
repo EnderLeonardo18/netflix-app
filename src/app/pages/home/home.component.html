@@ -1,0 +1,59 @@
+<div class="home-container">
+
+  <header class="banner" [style.--banner-bg]="'url(' + featuredMovie.backdropPath + ')'">
+    <div class="banner-overlay-top"></div>
+
+    <div class="banner-wrapper">
+
+      <div class="banner-poster-container">
+        <img [src]="featuredMovie.posterPath" [alt]="featuredMovie.title" class="banner-featured-poster" />
+      </div>
+
+      <div class="banner-contents">
+        <h1 class="banner-title">{{ featuredMovie.title }}</h1>
+
+        <p class="banner-description">
+          {{ truncateOverview(featuredMovie.overview, 150) }}
+        </p>
+
+        <div class="banner-buttons">
+          <button class="banner-button play">▶ Reproducir</button>
+          <button class="banner-button lista">+ Mi Lista</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="banner-overlay-bottom"></div>
+  </header>
+
+  <div class="rows-container">
+    <div class="movie-row">
+      <h2>Populares en Venezuela</h2>
+      <div class="row-posters">
+        @for (movie of trendingMovies; track movie.id) {
+          <img [src]="movie.posterPath" [alt]="movie.title" class="row-poster" />
+        }
+      </div>
+    </div>
+
+    <div class="movie-row">
+      <h2>Seguir viendo</h2>
+      <div class="row-posters">
+        @for (movie of actionMovies; track movie.id) {
+          <img [src]="movie.posterPath" [alt]="movie.title" class="row-poster" />
+        }
+      </div>
+    </div>
+
+    <div class="movie-row">
+      <h2>Tendencia Ahora</h2>
+      <div class="row-posters">
+        @for (movie of comedyMovies; track movie.id) {
+          <img [src]="movie.posterPath" [alt]="movie.title" class="row-poster" />
+        }
+      </div>
+    </div>
+  </div>
+
+</div>

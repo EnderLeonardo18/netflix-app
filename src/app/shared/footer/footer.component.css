@@ -1,0 +1,38 @@
+.footer {
+  max-width: 980px;
+  margin: 20px auto 0 auto;
+  padding: 0 4%;
+  color: #808080;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #141414;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.footer-links span {
+  font-size: 13px;
+  cursor: pointer;
+  transition: underline 0.2s;
+}
+
+.footer-links span:hover {
+  text-decoration: underline;
+}
+
+.footer-copyright {
+  font-size: 11px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 740px) {
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
