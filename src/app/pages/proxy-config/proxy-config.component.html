@@ -7,7 +7,7 @@
   <div class="nexus-card">
     <div class="form-group">
       <label>Ubicación del Proxy Agregado (Región Activa)</label>
-      <select [value]="nodeData?.activeProxyRegion" (change)="onProxyChange($event)" class="nexus-select">
+      <select [value]="nodeData.activeProxyRegion" (change)="onProxyChange($event)" class="nexus-select">
         <option value="VE">Venezuela (Restringido de Origen)</option>
         <option value="AR">Argentina (Pool LATAM Colectivo)</option>
         <option value="ES">España (Pool Europeo Ampliado)</option>
@@ -16,17 +16,17 @@
     </div>
 
     <div class="proxy-grid">
-      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'VE'" (click)="selectRegion('VE')">
+      <div class="proxy-box" [class.active]="nodeData.activeProxyRegion === 'VE'" (click)="selectRegion('VE')">
         <h3>Pool VE</h3>
         <p>Nodo Local Directo</p>
         <span class="ping">Latencia: ~15ms</span>
       </div>
-      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'AR'" (click)="selectRegion('AR')">
+      <div class="proxy-box" [class.active]="nodeData.activeProxyRegion === 'AR'" (click)="selectRegion('AR')">
         <h3>Pool AR</h3>
         <p>Túnel LATAM Interconectado</p>
         <span class="ping">Latencia: ~140ms</span>
       </div>
-      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'ES'" (click)="selectRegion('ES')">
+      <div class="proxy-box" [class.active]="nodeData.activeProxyRegion === 'ES'" (click)="selectRegion('ES')">
         <h3>Pool ES</h3>
         <p>Pasarela Europea Multipunto</p>
         <span class="ping">Latencia: ~210ms</span>
