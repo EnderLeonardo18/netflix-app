@@ -1,10 +1,17 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './pages/home/home.component';
+import { NexusDashboardComponent } from './pages/nexus-dashboard/nexus-dashboard.component';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
+    component: HomeComponent,
     title: 'Netflix - Inicio'
+  },
+  {
+    path: 'nexus-admin',
+    component: NexusDashboardComponent,
+    title: 'Netflix - Nexus Panel'
   },
   {
     path: '**',

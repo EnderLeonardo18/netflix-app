@@ -1,7 +1,21 @@
-<nav [ngClass]="{'nav-black': isScrolled}" class="navbar">
+<!-- <nav [ngClass]="{'nav-black': isScrolled}" class="navbar">
   <div class="nav-logo">NETFLIX</div>
   <ul class="nav-links">
     <li>Inicio</li>
+    <li>Series TV</li>
+    <li>Películas</li>
+    <li>Mi lista</li>
+  </ul>
+</nav> -->
+
+
+
+<nav [ngClass]="{'nav-black': isScrolled}" class="navbar">
+  <div class="nav-logo" routerLink="/">NETFLIX</div>
+
+  <ul class="nav-links">
+    <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</li>
+    <li routerLink="/nexus-admin" routerLinkActive="active-link">Panel del Nodo</li>
     <li>Series TV</li>
     <li>Películas</li>
     <li>Mi lista</li>

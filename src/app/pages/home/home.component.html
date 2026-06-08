@@ -7,6 +7,10 @@
 
       <div class="banner-poster-container">
         <img [src]="featuredMovie.posterPath" [alt]="featuredMovie.title" class="banner-featured-poster" />
+
+        @if (isMovieDownloaded(featuredMovie.id)) {
+          <div class="cache-badge">📥 Guardado en Caché Local</div>
+        }
       </div>
 
       <div class="banner-contents">
@@ -17,7 +21,14 @@
         </p>
 
         <div class="banner-buttons">
-          <button class="banner-button play">▶ Reproducir</button>
+          @if (isMovieDownloaded(featuredMovie.id)) {
+            <button class="banner-button play">▶ Reproducir desde Caché</button>
+          } @else {
+            <button class="banner-button play">▶ Reproducir</button>
+            <button class="banner-button download-btn" (click)="triggerDownload(featuredMovie.id)">
+              {{ downloadProgress[featuredMovie.id] ? 'Descargando: ' + downloadProgress[featuredMovie.id] + '%' : '📥 Caché Predictivo' }}
+            </button>
+          }
           <button class="banner-button lista">+ Mi Lista</button>
         </div>
       </div>
