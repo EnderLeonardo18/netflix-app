@@ -9,15 +9,29 @@
 </nav> -->
 
 
-
 <nav [ngClass]="{'nav-black': isScrolled}" class="navbar">
   <div class="nav-logo" routerLink="/">NETFLIX</div>
 
   <ul class="nav-links">
     <li routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Inicio</li>
-    <li routerLink="/nexus-admin" routerLinkActive="active-link">Panel del Nodo</li>
     <li>Series TV</li>
     <li>Películas</li>
     <li>Mi lista</li>
+
+    <li routerLink="/nexus/proxy" routerLinkActive="active-link">Configurar Proxy</li>
+    <li routerLink="/nexus/finanzas" routerLinkActive="active-link">Aportes/Finanzas</li>
+    <li routerLink="/nexus/cache" routerLinkActive="active-link">Caché Predictivo</li>
+    <li routerLink="/nexus/trueque" routerLinkActive="active-link">Trueque de Datos</li>
   </ul>
+
+  <div class="nav-nexus-status" *ngIf="nodeData">
+    <div class="status-pill geographic-indicator">
+      <span class="pulse-dot"></span>
+      Proxy: {{ nodeData.activeProxyRegion === 'VE' ? 'Venezuela (Básico)' : nodeData.activeProxyRegion === 'AR' ? 'Argentina (Latam Pool)' : 'España (Euro Pool)' }}
+    </div>
+
+    <div class="status-pill wallet-indicator">
+      🔶 Fondo: ${{ nodeData.currentFundsUSD }} / ${{ nodeData.monthlyQuotaUSD }}
+    </div>
+  </div>
 </nav>

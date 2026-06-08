@@ -1,0 +1,104 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>💰 Financiamiento Colectivo Transparente</h1>
+    <p class="subtitle">Aportes directos para el sustento de la infraestructura y el pool de servidores.</p>
+  </div>
+
+  <div class="finance-grid">
+    <div class="nexus-card metrics-card" *ngIf="nodeData">
+      <h3>Estado de la Cuota Mensual</h3>
+      <div class="fund-progress">
+        <div class="progress-labels">
+          <span>Acumulado: ${{nodeData.currentFundsUSD}}</span>
+          <span>Meta: ${{nodeData.monthlyQuotaUSD}}</span>
+        </div>
+        <div class="bar-bg">
+          <div class="bar-fill" [style.width.%]="(nodeData.currentFundsUSD / nodeData.monthlyQuotaUSD) * 100"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nexus-card">
+      <div class="tabs-payments">
+        <button [class.active]="activeTab === 'PAGO_MOVIL'" (click)="setTab('PAGO_MOVIL')">Pago Móvil (VES)</button>
+        <button [class.active]="activeTab === 'BINANCE_PAY'" (click)="setTab('BINANCE_PAY')">Binance Pay (USDT)</button>
+      </div>
+
+      <div *ngIf="successMessage" class="alert-success">{{ successMessage }}</div>
+
+      <div *ngIf="activeTab === 'PAGO_MOVIL'" class="payment-form">
+        <div class="form-group">
+          <label>Banco Destino</label>
+          <select [(ngModel)]="pmBanco" class="nexus-select">
+            <option value="Banco de Venezuela">Banco de Venezuela</option>
+            <option value="Banesco">Banesco</option>
+            <option value="Mercantil">Mercantil</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono Emisor</label>
+            <input type="text" [(ngModel)]="pmTelefono" placeholder="04120000000" class="nexus-input">
+          </div>
+          <div class="form-group">
+            <label>Cédula</label>
+            <input type="text" [(ngModel)]="pmCedula" placeholder="V-12345678" class="nexus-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Monto a transferir (Bs.)</label>
+          <input type="number" [(ngModel)]="pmMonto" class="nexus-input">
+        </div>
+        <button class="pay-submit" [disabled]="isProcessing" (click)="submitPagoMovil()">
+          {{ isProcessing ? 'Conciliando con banca local...' : 'Enviar Aporte Bs.' }}
+        </button>
+      </div>
+
+      <div *ngIf="activeTab === 'BINANCE_PAY'" class="payment-form">
+        <div class="form-group">
+          <label>Binance ID / Email</label>
+          <input type="text" [(ngModel)]="binanceId" placeholder="ID de 9 dígitos" class="nexus-input">
+        </div>
+        <div class="form-group">
+          <label>Monto a Depositar (USDT)</label>
+          <input type="number" [(ngModel)]="binanceMonto" class="nexus-input">
+        </div>
+        <button class="pay-submit binance-btn" [disabled]="isProcessing" (click)="submitBinancePay()">
+          {{ isProcessing ? 'Procesando firma en Binance Pool...' : 'Abonar vía Binance Pay' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="history-section table-card">
+    <h2>📋 Registro de Transparencia Distribución de Fondos</h2>
+    <table class="nexus-table">
+      <thead>
+        <tr>
+          <th>Miembro</th>
+          <th>Método</th>
+          <th>Referencia</th>
+          <th>Aporte Original</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tx of transactions">
+          <td>{{ tx.user }}</td>
+          <td>
+            <span class="badge" [ngClass]="tx.method === 'BINANCE_PAY' ? 'binance-badge' : 'pm-badge'">
+              {{ tx.method }}
+            </span>
+          </td>
+          <td><code>#{{ tx.reference }}</code></td>
+          <td>{{ tx.amountUSDT ? tx.amountUSDT + ' USDT' : tx.amountVES + ' VES' }}</td>
+          <td>
+            <span class="status-indicator" [ngClass]="tx.status === 'SUCCESS' ? 'status-success' : 'status-pending'">
+              {{ tx.status }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

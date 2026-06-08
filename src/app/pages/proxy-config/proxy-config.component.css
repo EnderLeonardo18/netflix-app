@@ -1,0 +1,17 @@
+.page-container { padding: 90px 6% 40px 6%; background-color: #141414; min-height: 100vh; color: white; }
+.page-header { margin-bottom: 30px; }
+.page-header h1 { font-size: 2.2rem; font-weight: 800; }
+.subtitle { color: #AAA; font-size: 1rem; margin-top: 5px; }
+.nexus-card { background: #181818; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 24px; max-width: 800px; }
+.form-group { margin-bottom: 25px; display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 0.9rem; color: #AAA; font-weight: 600; }
+.nexus-select { background: #333; color: white; border: 1px solid #444; padding: 12px; font-size: 1rem; border-radius: 4px; outline: none; cursor: pointer; }
+.help-text { color: #666; font-size: 0.8rem; line-height: 1.4; }
+.proxy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+.proxy-box { background: #222; border: 1px solid #333; padding: 20px; border-radius: 6px; cursor: pointer; transition: all 0.25s ease; text-align: center; }
+.proxy-box:hover { border-color: #555; background: #282828; }
+.proxy-box.active { border-color: #E50914; background: rgba(229, 9, 20, 0.1); }
+.proxy-box h3 { font-size: 1.2rem; margin-bottom: 5px; color: #fff; }
+.proxy-box p { font-size: 0.85rem; color: #AAA; margin-bottom: 10px; }
+.ping { font-size: 0.75rem; color: #666; display: block; }
+.proxy-box.active .ping { color: #E50914; font-weight: bold; }

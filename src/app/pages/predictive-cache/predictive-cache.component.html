@@ -1,0 +1,51 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>📥 Gestor de Descargas Predictivas (Caché Edge)</h1>
+    <p class="subtitle">Descargas en ráfaga alta programadas para mitigar la desconexión extrema en internet inestable.</p>
+  </div>
+
+  <div class="cache-layout">
+    <div class="nexus-card local-storage-status">
+      <h3>Unidad de Almacenamiento Local del Nodo</h3>
+      <div class="storage-metrics">
+        <div class="metric">
+          <span class="label">Títulos Locales Listos:</span>
+          <span class="value">{{ downloadedMovieIds.length }} / 3 disponibles</span>
+        </div>
+        <div class="metric">
+          <span class="label">Espacio Consumido:</span>
+          <span class="value">{{ downloadedMovieIds.length * 2.4 | number:'1.1-1' }} GB / 50 GB</span>
+        </div>
+      </div>
+      <div class="manual-trigger-zone">
+        <h4>Forzar Ráfaga de Almacenamiento Predictivo</h4>
+        <div class="trigger-buttons">
+          <button (click)="forceDownload(1)" [disabled]="downloadProgress[1] !== undefined" class="action-btn">
+            Sincronizar Stranger Things
+          </button>
+          <button (click)="forceDownload(2)" [disabled]="downloadProgress[2] !== undefined" class="action-btn">
+            Sincronizar Wednesday
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="nexus-card tracking-list">
+      <h3>Cola de Sincronización Local</h3>
+      <div class="no-downloads" *ngIf="getProgressKeys().length === 0">
+        <p>No hay descargas predictivas activas en este ciclo. El nodo está en reposo.</p>
+      </div>
+
+      <div class="download-item" *ngFor="let id of getProgressKeys()">
+        <div class="item-info">
+          <span class="movie-name">{{ movieTitles[id] || 'Película ID ' + id }}</span>
+          <span class="pct">{{ downloadProgress[id] }}%</span>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" [style.width.%]="downloadProgress[id]" [class.complete]="downloadProgress[id] === 100"></div>
+        </div>
+        <span class="status-lbl">{{ downloadProgress[id] === 100 ? '✅ Guardado e Indexado' : '⚡ Descargando fragmentos...' }}</span>
+      </div>
+    </div>
+  </div>
+</div>

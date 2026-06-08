@@ -1,0 +1,36 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>🌐 Orquestación de Red e Impacto</h1>
+    <p class="subtitle">Desbloqueo de licencias geográficas mediante enrutamiento comunitario agregado.</p>
+  </div>
+
+  <div class="nexus-card">
+    <div class="form-group">
+      <label>Ubicación del Proxy Agregado (Región Activa)</label>
+      <select [value]="nodeData?.activeProxyRegion" (change)="onProxyChange($event)" class="nexus-select">
+        <option value="VE">Venezuela (Restringido de Origen)</option>
+        <option value="AR">Argentina (Pool LATAM Colectivo)</option>
+        <option value="ES">España (Pool Europeo Ampliado)</option>
+      </select>
+      <p class="help-text">Agrupa peticiones residenciales para evadir bloqueos de VPN individuales sin perder velocidad local.</p>
+    </div>
+
+    <div class="proxy-grid">
+      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'VE'" (click)="selectRegion('VE')">
+        <h3>Pool VE</h3>
+        <p>Nodo Local Directo</p>
+        <span class="ping">Latencia: ~15ms</span>
+      </div>
+      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'AR'" (click)="selectRegion('AR')">
+        <h3>Pool AR</h3>
+        <p>Túnel LATAM Interconectado</p>
+        <span class="ping">Latencia: ~140ms</span>
+      </div>
+      <div class="proxy-box" [class.active]="nodeData?.activeProxyRegion === 'ES'" (click)="selectRegion('ES')">
+        <h3>Pool ES</h3>
+        <p>Pasarela Europea Multipunto</p>
+        <span class="ping">Latencia: ~210ms</span>
+      </div>
+    </div>
+  </div>
+</div>

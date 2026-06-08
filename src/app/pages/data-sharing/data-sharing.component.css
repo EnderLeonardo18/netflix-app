@@ -1,0 +1,24 @@
+.page-container { padding: 90px 6% 40px 6%; background-color: #141414; min-height: 100vh; color: white; }
+.page-header { margin-bottom: 30px; }
+.page-header h1 { font-size: 2.2rem; font-weight: 800; }
+.subtitle { color: #AAA; font-size: 1rem; }
+.sharing-card { background: #181818; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 30px; max-width: 850px; }
+.toggle-wrapper { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; border-bottom: 1px solid #333; padding-bottom: 25px; }
+.text-info h3 { font-size: 1.25rem; margin-bottom: 8px; color: #fff; }
+.description { color: #999; font-size: 0.9rem; line-height: 1.5; }
+.switch { position: relative; display: inline-block; width: 60px; height: 34px; flex-shrink: 0; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #444; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: #46d369; }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider.round { border-radius: 34px; }
+.slider.round:before { border-radius: 50%; }
+.impact-indicator { margin-top: 25px; display: flex; gap: 20px; background: #222; padding: 20px; border-radius: 6px; border-left: 4px solid #E50914; transition: all 0.3s; }
+.impact-indicator.active { border-left-color: #46d369; background: rgba(70, 211, 105, 0.05); }
+.impact-icon { font-size: 2rem; display: flex; align-items: center; }
+.impact-text h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.impact-text p { font-size: 0.95rem; color: #DDD; }
+.impact-text p strong { color: #fff; font-size: 1.1rem; }
+.status-msg { font-size: 0.8rem; color: #777; display: block; margin-top: 5px; }
+.impact-indicator.active .status-msg { color: #46d369; }

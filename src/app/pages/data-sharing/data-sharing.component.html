@@ -1,0 +1,32 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>🔄 Mecanismo de Trueque de Datos Éticos</h1>
+    <p class="subtitle">Optimización algorítmica del almacenamiento basado en la soberanía tecnológica local.</p>
+  </div>
+
+  <div class="sharing-card" *ngIf="nodeData">
+    <div class="toggle-wrapper">
+      <div class="text-info">
+        <h3>Consentimiento de Telemetría Anónima Colectiva</h3>
+        <p class="description">
+          Al activar este interruptor, el nodo recopila tus métricas de uso (sin almacenar datos de identidad privada). Esto le permite al orquestador predecir qué títulos descargar en las ráfagas nocturnas del vecindario.
+        </p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" [checked]="nodeData.dataSharingActive" (change)="onToggleChange($event)">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="impact-indicator" [class.active]="nodeData.dataSharingActive">
+      <div class="impact-icon">{{ nodeData.dataSharingActive ? '🚀' : '🛑' }}</div>
+      <div class="impact-text">
+        <h4>Efecto en el Ecosistema del Nodo</h4>
+        <p>Catálogo Ampliado Desbloqueado: <strong>{{ nodeData.unlockedTitlesCount }} títulos</strong></p>
+        <span class="status-msg">
+          {{ nodeData.dataSharingActive ? 'Optimizando espacio físico: Almacenando solo lo que la comunidad necesita.' : 'Nodo en modo pasivo. No se comparten hábitos del hogar.' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
